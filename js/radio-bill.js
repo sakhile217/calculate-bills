@@ -3,20 +3,17 @@ const billItemTypeRadioElement = document.querySelector(".billItemTypeRadio");
 const radioBillAddBtnElement = document.querySelector(".radioBillAddBtn");	
 const callTotalTwoElement = document.querySelector(".callTotalTwo");
 const smsTotalTwoElement = document.querySelector(".smsTotalTwo");	
-const totalTwoElement = document.querySelector(".totalTwo");
+const totalCostElem = document.querySelector(".totalTwo");
 
 
-
-
-
-
+var callsTotal = 0;
+var smsTotal = 0;
 
 function radioBillTotal(){
     // get the value entered in the billType textfield
     var billTypeEntered = billItemTypeRadioElement.value.trim();
     // update the correct total
-    var callsTotal = 0;
-    var smsTotal = 0;
+   
     if (billTypeEntered === "call"){
         callsTotal += 2.75;
     }
@@ -28,13 +25,24 @@ function radioBillTotal(){
     callTotalTwoElement.innerHTML = callsTotal.toFixed(2);
     smsTotalTwoElement.innerHTML = smsTotal.toFixed(2);
     var totalCost = callsTotal + smsTotal;
-    totalTwoElement.innerHTML = totalCost.toFixed(2);
+    totalCostElem.innerHTML = totalCost.toFixed(2);
 
 
-var radioBillAddBtnElement = document.querySelector("input[name='billItemType']:checked");
+var radioBillAddBtnElement = document.querySelector("input[name='billItemTypeRadio']:checked");
 if (radioBillAddBtnElement){
     var billItemType = radioBillAddBtnElement.value
     // billItemType will be 'call' or 'sms'
 }
+
+else if (totalCost >= 50){
+    // adding the danger class will make the text red
+    totalCostElem.classList.add("danger");
 }
+else if (totalCost >= 30){
+    totalCostElem.classList.add("warning");
+} 
+
+}
+
+
 radioBillAddBtnElement.addEventListener('click', radioBillTotal);
