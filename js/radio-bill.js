@@ -1,4 +1,3 @@
-
 const billItemTypeRadioElement = document.querySelector(".billItemTypeRadio");	
 const radioBillAddBtnElement = document.querySelector(".radioBillAddBtn");	
 const callTotalTwoElement = document.querySelector(".callTotalTwo");
@@ -28,9 +27,9 @@ function radioBillTotal(){
     totalCostElem.innerHTML = totalCost.toFixed(2);
 
 
-var radioBillAddBtnElement = document.querySelector("input[name='billItemTypeRadio']:checked");
-if (radioBillAddBtnElement){
-    var billItemType = radioBillAddBtnElement.value
+var billTypeEntered = document.querySelector("input[name='billItemTypeRadio']:checked");
+if (billTypeEntered){
+    billItemTypeRadioElement.innerHTML = billTypeEntered.value
     // billItemType will be 'call' or 'sms'
 }
 
